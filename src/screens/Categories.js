@@ -19,7 +19,6 @@ const Categories = () => {
     useEffect(() => {
         setCategoryFilter('none');
     }, []);
-
     const restaurantFilter = restaurantDatas.filter(
         restaurant => restaurant.category == categoryFilter,
     );
