@@ -5,13 +5,6 @@ import indian from '../../assets/img/indian.jpeg';
 import sushi from '../../assets/img/sushi.jpeg';
 import vegan from '../../assets/img/vegan.jpeg';
 
-import burgerCategory from '../../assets/img/categories/burger-min.jpeg';
-import indianCategory from '../../assets/img/categories/indian-min.jpeg';
-import japanCategory from '../../assets/img/categories/japan-min.jpeg';
-import pizzaCategory from '../../assets/img/categories/pizza-min.jpeg';
-import reunionCategory from '../../assets/img/categories/reunion-min.jpeg';
-import veganCategory from '../../assets/img/categories/vegan-min.jpeg';
-
 export default [
     {
         name: 'Le Vesuvio',
