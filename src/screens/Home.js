@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import Restaurant from '../components/Restaurant';
 import restaurantDatas from '../datas/restaurants';
 
-const Home = () => {
+const Home = props => {
     return (
         <View style={styles.container}>
             <View style={styles.restaurants}>
@@ -15,7 +15,16 @@ const Home = () => {
                     )}
                     data={restaurantDatas}
                     keyExtractor={() => Math.random()}
-                    renderItem={({ item }) => <Restaurant item={item} />}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            activeOpacity={0.8}
+                            onPress={() => {
+                                props.navigation.navigate('Menu', { item: item });
+                            }}
+                        >
+                            <Restaurant item={item} />
+                        </TouchableOpacity>
+                    )}
                 />
             </View>
         </View>

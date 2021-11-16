@@ -169,6 +169,51 @@ export default [
                     },
                 ],
             },
+            {
+                name: 'Menu mix Saumon/Thon',
+                description: '8 sushis, 4 saumons et 4 thons, soupe et salade',
+                price: 13.5,
+                extra: [
+                    {
+                        name: 'Supplément wasabi',
+                        price: 0,
+                    },
+                    {
+                        name: 'Supplément sauce soja',
+                        price: 0,
+                    },
+                ],
+            },
+            {
+                name: 'Menu mix Saumon/Thon',
+                description: '8 sushis, 4 saumons et 4 thons, soupe et salade',
+                price: 13.5,
+                extra: [
+                    {
+                        name: 'Supplément wasabi',
+                        price: 0,
+                    },
+                    {
+                        name: 'Supplément sauce soja',
+                        price: 0,
+                    },
+                ],
+            },
+            {
+                name: 'Menu mix Saumon/Thon',
+                description: '8 sushis, 4 saumons et 4 thons, soupe et salade',
+                price: 13.5,
+                extra: [
+                    {
+                        name: 'Supplément wasabi',
+                        price: 0,
+                    },
+                    {
+                        name: 'Supplément sauce soja',
+                        price: 0,
+                    },
+                ],
+            },
         ],
     },
     {

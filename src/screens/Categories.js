@@ -7,8 +7,11 @@ import {
     ImageBackground,
     TouchableOpacity,
     Dimensions,
+    TouchableWithoutFeedback,
 } from 'react-native';
-import { useEffect } from 'react/cjs/react.development';
+
+import { Ionicons } from '@expo/vector-icons';
+
 import Restaurant from '../components/Restaurant';
 
 import categoryDatas from '../datas/categories';
@@ -16,9 +19,7 @@ import restaurantDatas from '../datas/restaurants';
 
 const Categories = () => {
     const [categoryFilter, setCategoryFilter] = useState('none');
-    useEffect(() => {
-        setCategoryFilter('none');
-    }, []);
+
     const restaurantFilter = restaurantDatas.filter(
         restaurant => restaurant.category == categoryFilter,
     );
@@ -56,7 +57,14 @@ const Categories = () => {
                 <View style={styles.restaurants}>
                     <FlatList
                         ListHeaderComponent={() => (
-                            <Text style={styles.title}> {categoryFilter} </Text>
+                            <View style={styles.header}>
+                                <Text style={styles.title}> {categoryFilter} </Text>
+                                <TouchableWithoutFeedback
+                                    onPress={() => setCategoryFilter('none')}
+                                >
+                                    <Ionicons name='arrow-back-outline' size={26} />
+                                </TouchableWithoutFeedback>
+                            </View>
                         )}
                         data={restaurantFilter}
                         keyExtractor={() => Math.random()}
@@ -69,12 +77,17 @@ const Categories = () => {
 };
 
 const styles = StyleSheet.create({
-    title: {
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         backgroundColor: 'white',
+        paddingHorizontal: 20,
+        paddingBottom: 20,
+    },
+    title: {
         fontSize: 20,
         fontFamily: 'Uber-move-medium',
-        paddingLeft: 20,
-        paddingBottom: 20,
     },
     container: {
         flex: 1,

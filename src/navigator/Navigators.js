@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 
 //Screens
 import HomeScreen from '../screens/Home';
 import CategoriesScreen from '../screens/Categories';
+import MenuScreen from '../screens/Menu';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,3 +38,22 @@ export const AppTabNavigator = () => (
         />
     </Tab.Navigator>
 );
+
+export const Modal = createNativeStackNavigator();
+
+export const ModalMenuNavigator = () => {
+    return (
+        <Modal.Navigator>
+            <Modal.Screen
+                name='HomeModal'
+                component={AppTabNavigator}
+                options={{ headerShown: false }}
+            />
+            <Modal.Screen
+                name='Menu'
+                component={MenuScreen}
+                options={{ headerShown: false }}
+            />
+        </Modal.Navigator>
+    );
+};
