@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     restaurant: {
         marginTop: 12,
         marginBottom: 6,
+        backgroundColor: 'white',
     },
     background: {
         marginTop: 16,
