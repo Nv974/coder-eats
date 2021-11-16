@@ -1,27 +1,20 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    ImageBackground,
-    Dimensions,
-    TouchableOpacity,
-} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ImageBackground, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const Restaurant = props => {
     return (
-        <View style={styles.restaurant}>
-            <TouchableOpacity activeOpacity={0.8}>
+        <View style={styles.container}>
+            <View style={styles.restaurant}>
                 <ImageBackground source={props.item.image} style={styles.background} />
                 <View style={styles.description}>
                     <View>
-                        <Text style={styles.descriptionTitle}> {props.item.name} </Text>
+                        <Text style={styles.descriptionTitle}>{props.item.name}</Text>
 
                         <Text style={styles.descriptionInformations}>
                             <Ionicons name='restaurant' size={15} color='#28C167' /> -
-                            Frais de livraison : {props.item.deliveryPrice}€ -{' '}
-                            {props.item.deliveryTime - 5} - {props.item.deliveryTime + 5}{' '}
+                            Frais de livraison : {props.item.deliveryPrice}€ -
+                            {props.item.deliveryTime - 5} -{props.item.deliveryTime + 5}{' '}
                             minutes
                         </Text>
                     </View>
@@ -29,7 +22,7 @@ const Restaurant = props => {
                         <Text> {props.item.rate} </Text>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </View>
         </View>
     );
 };
