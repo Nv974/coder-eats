@@ -16,9 +16,9 @@ import restaurantDatas from '../datas/restaurants';
 
 const Categories = () => {
     const [categoryFilter, setCategoryFilter] = useState('none');
-    useEffect(() => {
-        setCategoryFilter('none');
-    }, []);
+    // useEffect(() => {
+    //     setCategoryFilter('none');
+    // }, []);
     const restaurantFilter = restaurantDatas.filter(
         restaurant => restaurant.category == categoryFilter,
     );
