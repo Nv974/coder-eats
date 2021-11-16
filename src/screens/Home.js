@@ -30,14 +30,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: 'Uber-move-medium',
         paddingLeft: 20,
+        paddingBottom: 20,
+        backgroundColor: 'white',
     },
     logoEat: {
         color: '#28C167',
         fontFamily: 'Uber-move-medium',
     },
     restaurants: {
-        //backgroundColor: '#f1f2f6',
-        backgroundColor: '#fff',
+        backgroundColor: '#f1f2f6',
         marginTop: 30,
     },
 });
