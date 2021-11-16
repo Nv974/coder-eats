@@ -5,8 +5,8 @@ import {
     StyleSheet,
     ImageBackground,
     ScrollView,
-    FlatList,
     TouchableWithoutFeedback,
+    TouchableOpacity,
 } from 'react-native';
 import Product from '../components/Product';
 import { Ionicons } from '@expo/vector-icons';
@@ -30,7 +30,16 @@ const Menu = props => {
             <View style={styles.main}>
                 <Text style={styles.title}> {item.name} </Text>
                 {item.menu.map(product => {
-                    return <Product key={Math.random()} product={product} />;
+                    return (
+                        <TouchableOpacity
+                            key={Math.random()}
+                            onPress={() =>
+                                props.navigation.navigate('Product', { product: product })
+                            }
+                        >
+                            <Product product={product} />
+                        </TouchableOpacity>
+                    );
                 })}
             </View>
         </ScrollView>
@@ -40,7 +49,6 @@ const Menu = props => {
 const styles = StyleSheet.create({
     headerBackground: {
         height: 130,
-        flexDirection: 'row',
     },
     title: {
         fontSize: 25,
@@ -51,8 +59,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     goBack: {
-        alignSelf: 'center',
-        paddingLeft: 10,
+        padding: 10,
     },
 });
 
