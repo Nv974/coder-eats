@@ -1,23 +1,59 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
-import restaurantDatas from '../datas/restaurants';
-import Category from '../components/Category';
+import {
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    ImageBackground,
+    Dimensions,
+} from 'react-native';
+import categoryDatas from '../datas/categories';
 
 const Categories = () => {
-    restaurantDatas.map(element => console.log(element));
     return (
         <View style={styles.container}>
             <FlatList
-                data={restaurantDatas}
-                renderItem={({ item }) => <Category />}
+                data={categoryDatas}
+                renderItem={({ item }) => (
+                    <View>
+                        <ImageBackground source={item.image} style={styles.background}>
+                            <View style={styles.categoryName}>
+                                <Text style={styles.categoryText}> {item.name} </Text>
+                            </View>
+                        </ImageBackground>
+                    </View>
+                )}
                 keyExtractor={() => Math.random()}
+                numColumns={2}
             />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 100,
+    },
+    background: {
+        width: 180,
+        height: 150,
+        margin: 5,
+    },
+    categoryName: {
+        backgroundColor: 'rgba(0, 0, 0,0.4)',
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    categoryText: {
+        color: 'white',
+        fontSize: 22,
+        fontFamily: 'Uber-move',
+    },
 });
 
 export default Categories;
