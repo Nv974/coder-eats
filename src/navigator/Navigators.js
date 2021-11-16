@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/Home';
 import CategoriesScreen from '../screens/Categories';
 import MenuScreen from '../screens/Menu';
+import ProductScreen from '../screens/Product';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,6 +53,11 @@ export const ModalMenuNavigator = () => {
             <Modal.Screen
                 name='Menu'
                 component={MenuScreen}
+                options={{ headerShown: false }}
+            />
+            <Modal.Screen
+                name='Product'
+                component={ProductScreen}
                 options={{ headerShown: false }}
             />
         </Modal.Navigator>

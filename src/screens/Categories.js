@@ -17,7 +17,7 @@ import Restaurant from '../components/Restaurant';
 import categoryDatas from '../datas/categories';
 import restaurantDatas from '../datas/restaurants';
 
-const Categories = () => {
+const Categories = props => {
     const [categoryFilter, setCategoryFilter] = useState('none');
 
     const restaurantFilter = restaurantDatas.filter(
@@ -68,7 +68,18 @@ const Categories = () => {
                         )}
                         data={restaurantFilter}
                         keyExtractor={() => Math.random()}
-                        renderItem={({ item }) => <Restaurant item={item} />}
+                        renderItem={({ item }) => (
+                            <TouchableOpacity
+                                activeOpacity={0.8}
+                                onPress={() =>
+                                    props.navigation.navigate('Menu', {
+                                        item,
+                                    })
+                                }
+                            >
+                                <Restaurant item={item} />
+                            </TouchableOpacity>
+                        )}
                     />
                 </View>
             )}
