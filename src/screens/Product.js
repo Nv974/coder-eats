@@ -69,7 +69,7 @@ const Product = props => {
 
     return (
         <View style={styles.container}>
-            <ScrollView style={{ marginBottom: 120 }}>
+            <ScrollView style={{ marginBottom: 110 }}>
                 <ImageBackground
                     style={styles.background}
                     source={require('../../assets/img/sushi.jpeg')}
@@ -147,7 +147,7 @@ const Product = props => {
                     <Text
                         style={{
                             color: 'white',
-                            fontSize: 20,
+                            fontSize: 18,
                             fontFamily: 'Uber-move-medium',
                         }}
                     >
@@ -202,14 +202,14 @@ const styles = StyleSheet.create({
     bottom: {
         position: 'absolute',
         bottom: 0,
-        marginTop: 15,
-        paddingTop: 20,
-        paddingBottom: 40,
-        width: '90%',
+        marginTop: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+        width: '100%',
         alignSelf: 'center',
         borderTopColor: '#E2E2E2',
         borderTopWidth: 3,
-        paddingHorizontal: 30,
+        paddingHorizontal: '10%',
     },
     addToCart: {
         backgroundColor: 'black',

@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         height: Dimensions.get('screen').height,
-        paddingBottom: 100,
+        paddingBottom: 90,
     },
     headerBackground: {
         height: 180,
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     cartView: {
         position: 'absolute',
-        bottom: Platform.OS === 'ios' ? 40 : 10,
+        bottom: 10,
         width: 350,
         backgroundColor: 'black',
         left: '50%',

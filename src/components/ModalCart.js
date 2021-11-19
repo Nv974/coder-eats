@@ -62,7 +62,9 @@ const ModalCart = props => {
 
     onPressOrderHandler = () => {
         props.setShowModal(false);
-        props.navigation.navigate('Order');
+        props.navigation.navigate('Order', {
+            restaurant: props.restaurant,
+        });
     };
 
     return (

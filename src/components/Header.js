@@ -13,7 +13,7 @@ const Header = () => {
 
 const styles = StyleSheet.create({
     logo: {
-        fontSize: 20,
+        fontSize: 24,
         fontFamily: 'Uber-move-medium',
         paddingLeft: 20,
         paddingBottom: 10,
