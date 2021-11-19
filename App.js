@@ -1,12 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import {
-    StyleSheet,
-    View,
-    ActivityIndicator,
-    Platform,
-    SafeAreaView,
-} from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, View, ActivityIndicator } from 'react-native';
+
+import * as Notifications from 'expo-notifications';
+
 import { useFonts } from 'expo-font';
 import AppTabNavigator from './src/navigator/AppNavigator';
 
@@ -15,7 +12,31 @@ import { createStore } from 'redux';
 const store = createStore(reducer);
 import { Provider } from 'react-redux';
 
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: false,
+        shouldSetBadge: false,
+    }),
+});
+
 export default function App() {
+    useEffect(() => {
+        const getPermissions = async () => {
+            const { status } = await Notifications.getPermissionsAsync();
+
+            let finalStatus = status;
+
+            if (status !== 'granted') {
+                const { requestStatus } = await Notifications.requestPermissionsAsync();
+                finalStatus = requestStatus;
+            }
+
+            await Notifications.setBadgeCountAsync(0);
+        };
+        getPermissions();
+    }, []);
+
     let [fontLoaded] = useFonts({
         'Uber-move': require('./assets/fonts/Uber-Move.ttf'),
         'Uber-move-bold': require('./assets/fonts/Uber-Move-Bold.ttf'),

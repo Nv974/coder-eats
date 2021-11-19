@@ -3,8 +3,11 @@ import { View, Text, StyleSheet, SafeAreaView, Image, Animated } from 'react-nat
 
 import { useDispatch } from 'react-redux';
 import * as cartActions from '../store/actions/cart';
+import * as Notifications from 'expo-notifications';
 
 const Order = props => {
+    const restaurant = props.route.params.restaurant;
+
     const [imageFade] = useState(new Animated.Value(1));
 
     const dispatch = useDispatch();
@@ -25,6 +28,23 @@ const Order = props => {
         }).start(() => fadeOut());
     };
 
+    const onCardPressHandler = async () => {
+        await Notifications.scheduleNotificationAsync({
+            content: {
+                title: 'Commande effectuée avec ' + restaurant.name,
+                body:
+                    'Temps estimé : entre ' +
+                    (restaurant.deliveryTime - 5) +
+                    ' et ' +
+                    (restaurant.deliveryTime + 5) +
+                    ' minutes',
+                data: null,
+            },
+            trigger: { seconds: 10 },
+        });
+        await Notifications.setBadgeCountAsync(1);
+    };
+
     useEffect(() => {
         dispatch(cartActions.resetCart());
         fadeIn();
@@ -32,6 +52,7 @@ const Order = props => {
         function redirect() {
             props.navigation.navigate('Home');
         }
+        onCardPressHandler();
     }, []);
 
     const animation = {
