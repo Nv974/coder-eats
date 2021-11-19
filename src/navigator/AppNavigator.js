@@ -1,12 +1,12 @@
 //Libraries
 import React from 'react';
-import { ModalMenuNavigator } from './Navigators';
+import { MenuStackNavigator } from './Navigators';
 import { NavigationContainer } from '@react-navigation/native';
 
 const AppNavigator = () => {
     return (
         <NavigationContainer>
-            <ModalMenuNavigator />
+            <MenuStackNavigator />
         </NavigationContainer>
     );
 };
