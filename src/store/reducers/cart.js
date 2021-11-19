@@ -1,6 +1,7 @@
 import {
     ADD_PRODUCT_TO_CART,
     DELETE_PRODUCT_TO_CART,
+    RESET_CART,
     SET_FINAL_PRICE,
 } from '../actions/cart';
 
@@ -29,6 +30,14 @@ export default (state = initialState, action = {}) => {
             return {
                 ...state,
                 cart: newArr,
+            };
+        }
+        case RESET_CART: {
+            return {
+                ...state,
+                cart: [],
+                cartId: 0,
+                price: 0,
             };
         }
         default:

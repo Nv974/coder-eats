@@ -74,6 +74,7 @@ const Menu = props => {
                 restaurant={item}
                 showModal={showModal}
                 setShowModal={setShowModal}
+                navigation={props.navigation}
             />
         </View>
     );
