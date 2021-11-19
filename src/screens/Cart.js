@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FlatList } from 'react-native-gesture-handler';
 import * as cartActions from '../store/actions/cart';
 
-const Cart = () => {
+const Cart = props => {
     const cart = useSelector(state => state.cart.cart);
     const price = useSelector(state => state.cart.price);
     const [finalPrice, setFinalPrice] = useState(0);
@@ -22,9 +22,6 @@ const Cart = () => {
         }
         setFinalPrice(newPrice);
         dispatch(cartActions.setFinalPrice(newPrice));
-        if (!cart[0]) {
-            props.setShowModal(false);
-        }
     }, [cart]);
 
     const dispatch = useDispatch();
@@ -130,13 +127,17 @@ const Cart = () => {
                                     {' €'}
                                 </Text>
                             </View>
-                            <View style={styles.order}>
+                            <TouchableOpacity
+                                activeOpacity={0.8}
+                                style={styles.order}
+                                onPress={() => props.navigation.navigate('Order')}
+                            >
                                 <Text style={styles.orderText}>
                                     Commander -{' '}
                                     {Math.round((price + 1 + servicesCost) * 100) / 100}
                                     {' €'}
                                 </Text>
-                            </View>
+                            </TouchableOpacity>
                         </>
                     )}
                 />

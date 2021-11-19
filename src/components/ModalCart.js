@@ -60,6 +60,11 @@ const ModalCart = props => {
         );
     };
 
+    onPressOrderHandler = () => {
+        props.setShowModal(false);
+        props.navigation.navigate('Order');
+    };
+
     return (
         <View style={styles.container}>
             <Modal animationType='slide' transparent={true} visible={props.showModal}>
@@ -138,7 +143,11 @@ const ModalCart = props => {
                                     {servicesCost + ' €'}
                                 </Text>
                             </View>
-                            <View style={styles.order}>
+                            <TouchableOpacity
+                                activeOpacity={0.8}
+                                style={styles.order}
+                                onPress={onPressOrderHandler}
+                            >
                                 <Text style={styles.orderText}>
                                     Commander -{' '}
                                     {Math.round(
@@ -149,7 +158,7 @@ const ModalCart = props => {
                                     ) / 100}
                                     {' €'}
                                 </Text>
-                            </View>
+                            </TouchableOpacity>
                         </>
                     )}
                 />

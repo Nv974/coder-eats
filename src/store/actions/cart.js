@@ -24,3 +24,11 @@ export const deleteProductToCart = id => ({
     type: DELETE_PRODUCT_TO_CART,
     id,
 });
+
+// action type RESET_CART
+export const RESET_CART = 'RESET_CART';
+
+// action creator resetCart
+export const resetCart = () => ({
+    type: RESET_CART,
+});

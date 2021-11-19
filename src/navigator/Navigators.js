@@ -9,6 +9,7 @@ import CategoriesScreen from '../screens/Categories';
 import MenuScreen from '../screens/Menu';
 import ProductScreen from '../screens/Product';
 import CartScreen from '../screens/Cart';
+import OrderScreen from '../screens/Order';
 
 const Tab = createBottomTabNavigator();
 
@@ -69,6 +70,11 @@ export const MenuStackNavigator = () => {
             <Stack.Screen
                 name='Product'
                 component={ProductScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name='Order'
+                component={OrderScreen}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
