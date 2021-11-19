@@ -1,6 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View, ActivityIndicator, Platform } from 'react-native';
+import {
+    StyleSheet,
+    View,
+    ActivityIndicator,
+    Platform,
+    SafeAreaView,
+} from 'react-native';
 import { useFonts } from 'expo-font';
 import AppTabNavigator from './src/navigator/AppNavigator';
 
@@ -24,7 +30,7 @@ export default function App() {
 
     return (
         <View style={styles.container}>
-            <StatusBar style='auto' />
+            <StatusBar style='dark' />
             <Provider store={store}>
                 <AppTabNavigator />
             </Provider>
@@ -35,7 +41,6 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: Platform.OS === 'android' ? 30 : 50,
         backgroundColor: '#fff',
     },
 });

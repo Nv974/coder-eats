@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
@@ -8,6 +8,7 @@ import HomeScreen from '../screens/Home';
 import CategoriesScreen from '../screens/Categories';
 import MenuScreen from '../screens/Menu';
 import ProductScreen from '../screens/Product';
+import CartScreen from '../screens/Cart';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +21,8 @@ export const AppTabNavigator = () => (
                     iconName = focused ? 'home' : 'home-outline';
                 } else if (route.name === 'Categories') {
                     iconName = focused ? 'search-circle' : 'search-circle-outline';
+                } else if (route.name === 'Cart') {
+                    iconName = focused ? 'cart' : 'cart-outline';
                 }
                 return <Ionicons name={iconName} size={size} color={'black'} />;
             },
@@ -29,7 +32,10 @@ export const AppTabNavigator = () => (
         <Tab.Screen
             name='Home'
             component={HomeScreen}
-            options={{ title: 'Acceuil', headerShown: false }}
+            options={{
+                title: 'Acceuil',
+                headerShown: false,
+            }}
         />
 
         <Tab.Screen
@@ -37,29 +43,34 @@ export const AppTabNavigator = () => (
             component={CategoriesScreen}
             options={{ title: 'Parcourir', headerShown: false }}
         />
+        <Tab.Screen
+            name='Cart'
+            component={CartScreen}
+            options={{ title: 'Panier', headerShown: false }}
+        />
     </Tab.Navigator>
 );
 
-export const Modal = createNativeStackNavigator();
+export const Stack = createNativeStackNavigator();
 
-export const ModalMenuNavigator = () => {
+export const MenuStackNavigator = () => {
     return (
-        <Modal.Navigator>
-            <Modal.Screen
-                name='HomeModal'
+        <Stack.Navigator>
+            <Stack.Screen
+                name='HomeStack'
                 component={AppTabNavigator}
                 options={{ headerShown: false }}
             />
-            <Modal.Screen
+            <Stack.Screen
                 name='Menu'
                 component={MenuScreen}
                 options={{ headerShown: false }}
             />
-            <Modal.Screen
+            <Stack.Screen
                 name='Product'
                 component={ProductScreen}
                 options={{ headerShown: false }}
             />
-        </Modal.Navigator>
+        </Stack.Navigator>
     );
 };

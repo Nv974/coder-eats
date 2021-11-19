@@ -1,20 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    FlatList,
+    SafeAreaView,
+    Platform,
+} from 'react-native';
 import Restaurant from '../components/Restaurant';
 import restaurantDatas from '../datas/restaurants';
+import Header from '../components/Header';
 
 const Home = props => {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            <Header />
             <View style={styles.restaurants}>
                 <FlatList
-                    ListHeaderComponent={() => (
-                        <Text style={styles.logo}>
-                            Coder <Text style={styles.logoEat}> Eats </Text>
-                        </Text>
-                    )}
                     data={restaurantDatas}
-                    keyExtractor={() => Math.random()}
+                    keyExtractor={item => item.id}
                     renderItem={({ item }) => (
                         <TouchableOpacity
                             activeOpacity={0.8}
@@ -27,7 +32,7 @@ const Home = props => {
                     )}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 
@@ -35,20 +40,9 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
     },
-    logo: {
-        fontSize: 20,
-        fontFamily: 'Uber-move-medium',
-        paddingLeft: 20,
-        paddingBottom: 20,
-        backgroundColor: 'white',
-    },
-    logoEat: {
-        color: '#28C167',
-        fontFamily: 'Uber-move-medium',
-    },
     restaurants: {
         backgroundColor: '#f1f2f6',
-        marginTop: 30,
+        marginBottom: Platform.OS === 'ios' ? 90 : 130,
     },
 });
 

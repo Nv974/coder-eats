@@ -8,11 +8,13 @@ import {
     TouchableOpacity,
     Dimensions,
     TouchableWithoutFeedback,
+    Platform,
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 
 import Restaurant from '../components/Restaurant';
+import Header from '../components/Header';
 
 import categoryDatas from '../datas/categories';
 import restaurantDatas from '../datas/restaurants';
@@ -27,30 +29,33 @@ const Categories = props => {
     return (
         <View style={styles.container}>
             {categoryFilter === 'none' && (
-                <View style={styles.category}>
-                    <FlatList
-                        data={categoryDatas}
-                        renderItem={({ item }) => (
-                            <TouchableOpacity
-                                activeOpacity={0.8}
-                                onPress={() => setCategoryFilter(item.name)}
-                            >
-                                <ImageBackground
-                                    source={item.image}
-                                    style={styles.background}
+                <>
+                    <Header />
+                    <View style={styles.category}>
+                        <FlatList
+                            data={categoryDatas}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity
+                                    activeOpacity={0.8}
+                                    onPress={() => setCategoryFilter(item.name)}
                                 >
-                                    <View style={styles.categoryName}>
-                                        <Text style={styles.categoryText}>
-                                            {item.name}
-                                        </Text>
-                                    </View>
-                                </ImageBackground>
-                            </TouchableOpacity>
-                        )}
-                        keyExtractor={() => Math.random()}
-                        numColumns={2}
-                    />
-                </View>
+                                    <ImageBackground
+                                        source={item.image}
+                                        style={styles.background}
+                                    >
+                                        <View style={styles.categoryName}>
+                                            <Text style={styles.categoryText}>
+                                                {item.name}
+                                            </Text>
+                                        </View>
+                                    </ImageBackground>
+                                </TouchableOpacity>
+                            )}
+                            keyExtractor={() => Math.random()}
+                            numColumns={2}
+                        />
+                    </View>
+                </>
             )}
 
             {categoryFilter !== 'none' && (
@@ -67,7 +72,7 @@ const Categories = props => {
                             </View>
                         )}
                         data={restaurantFilter}
-                        keyExtractor={() => Math.random()}
+                        keyExtractor={item => item.id}
                         renderItem={({ item }) => (
                             <TouchableOpacity
                                 activeOpacity={0.8}
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         paddingHorizontal: 20,
-        paddingBottom: 20,
+        paddingBottom: 10,
     },
     title: {
         fontSize: 20,
@@ -102,14 +107,13 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        alignItems: 'center',
         backgroundColor: 'white',
     },
     category: {
-        paddingTop: 100,
+        alignSelf: 'center',
     },
     background: {
-        width: 180,
+        width: Dimensions.get('screen').width * 0.45,
         height: 150,
         margin: 5,
     },
@@ -127,8 +131,8 @@ const styles = StyleSheet.create({
     },
     restaurants: {
         backgroundColor: '#f1f2f6',
-        marginTop: 30,
         width: Dimensions.get('screen').width,
+        marginTop: Platform.OS === 'android' ? 30 : 50,
     },
 });
 
