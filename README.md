@@ -23,5 +23,5 @@ codée en React Native
 
 4. Lancer l'application
 
-    Il faut télecharger Expo sur le playStore ou l'apple store que votre télphone soit connecté à vote résau wifi sur lequel est lancé le serveur.
+    Il faut télecharger Expo sur le playStore ou l'apple store et que votre télphone soit connecté à vote résau wifi sur lequel est lancé le serveur.
     Vous pouvez lancer l'application sur android studio, Xcode ou sinon scanner le QR Code qui vous est donné.
