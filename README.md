@@ -7,6 +7,8 @@ codée en React Native
 
 ## Installation
 
+Pré-requis : il faut avoir NodeJs installé sur sa machine https://nodejs.org/en/
+
 1. Installer Expo Cli
 
     npm install --global expo-cli
